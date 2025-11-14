@@ -19,15 +19,19 @@
  * apertura file
  * edit
  */
-int main(void) {
+int main(int argc, char **argv) {
     print_frr(get_welcome_message());
-
-    printf(", inserisci Path del file .txt\n: ");
-
 
     char f_path[RAW_STR_LENGTH];
 
-    scanf_str(f_path);
+    // READ FIRST ARGUMENT (file path)
+    if (argc == 2) {
+        strcat(f_path, argv[1]);
+    } else {
+        printf(", inserisci Path del file .txt\n: ");
+        scanf_str(f_path);
+    }
+
 
     printf("Inserisci la scelta: "
         "\n a) Read"
