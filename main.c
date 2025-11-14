@@ -19,8 +19,10 @@
  * apertura file
  * edit
  */
-int main(int argc, char **argv) {
-    print_frr(get_welcome_message());
+int main(const int argc, char **argv) {
+    printf("%s", llm(
+               "Scrivi un saluto tecnico e conciso (max 20 caratteri) per chi ha appena lanciato un software CLI di editing immagini. "
+               "Rispondi solo con il saluto, senza virgolette né testo extra."));
 
     char f_path[RAW_STR_LENGTH];
 
@@ -39,6 +41,7 @@ int main(int argc, char **argv) {
         "\n c) Append"
         "\n d) Clear"
         "\n e) Delete"
+        "\n f) Rewrite With Ai"
         "\n z) Exit"
     );
 
@@ -117,6 +120,15 @@ int main(int argc, char **argv) {
                     print_err("Errore nell'aprire il file");
                     return -1;
                 }
+                break;
+            }
+            case 'f': {
+                TxtFileActionParams params = {
+                    .file_path = f_path,
+                    .txt = NULL
+                };
+                rewrite(&params);
+
                 break;
             }
             default: {

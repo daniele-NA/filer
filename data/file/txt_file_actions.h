@@ -12,27 +12,28 @@
 */
 
 
-
 typedef struct {
     char *file_path;
 
     /**
-     * Per le operazioni che non lo richiednono sarà NULL
+     * Per le operazioni che non lo richiedono sarà NULL
      */
     char *txt;
 } TxtFileActionParams;
 
-FILE * open_file(char *file_path,char * mode);
+FILE *open_file(char *file_path, char *mode);
 
-FILE_BOOL read(TxtFileActionParams* params);
+FILE_BOOL read(TxtFileActionParams *params);
 
 FILE_BOOL write(TxtFileActionParams *params);
 
-FILE_BOOL append(TxtFileActionParams* params);
+FILE_BOOL append(TxtFileActionParams *params);
 
-FILE_BOOL clear(TxtFileActionParams* params);
+FILE_BOOL clear(TxtFileActionParams *params);
 
-FILE_BOOL delete(TxtFileActionParams* params);
+FILE_BOOL delete(TxtFileActionParams *params);
+
+FILE_BOOL rewrite(TxtFileActionParams *params);
 
 
 #endif

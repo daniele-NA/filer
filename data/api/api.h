@@ -5,7 +5,7 @@
 
 #include <curl/curl.h>
 
-LLM_RESPONSE get_welcome_message();
+LLM_RESPONSE llm(char * prompt);
 
 size_t write_callback(void * contents,size_t size,size_t nmemb,void * user_pt);
 

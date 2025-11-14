@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include <curl/curl.h>
 #include "api.h"
-#include "body/bodies.h"
 #include "../../util/dotenv/dotenv.h"
 
 
-LLM_RESPONSE get_welcome_message() {
+LLM_RESPONSE llm(char * prompt) {
     env_load("..", false); // Aprirà ../.env
 
     char *regolo_key = getenv("REGOLO_KEY");
@@ -110,7 +109,7 @@ void set_headers(CURL *curl, const char *api_key) {
 }
 
 void set_data(CURL *curl, char *prompt) {
-    const char *first_part = "{\"model\": \"Qwen2.5-VL-32B-Instruct\", \"prompt\":\"";
+    const char *first_part = "{\"model\": \"Llama-3.1-8B-Instruct\", \"prompt\":\"";
     const char *second_part = "\", \"max_tokens\": 200, \"temperature\": 0.2}";
 
     char *full_prompt = calloc((strlen(first_part) + strlen(prompt) + strlen(second_part)), sizeof(char));
