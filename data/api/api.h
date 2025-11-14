@@ -12,5 +12,3 @@ size_t write_callback(void * contents,size_t size,size_t nmemb,void * user_pt);
 void set_headers(CURL *curl,const char *api_key);
 
 void set_data(CURL *curl,char * prompt);
-
-
